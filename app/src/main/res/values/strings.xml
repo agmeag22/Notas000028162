@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Notas00002816</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="agregar_persona">Agregar Persona</string>
+    <string name="notas">Notas</string>
+    <string name="ver_notas_item_android_id"><![CDATA[Ver notas /> <item android:id=]]></string>
+    <string name="vernotas">Ver notas</string>
+
+    <string name="agregar_alumno">Agregar Alumno</string>
+    <string name="nombre">Nombre:</string>
+    <string name="ejemplo_carnet">Ejemplo: 00002816</string>
+    <string name="agregar">agregar</string>
+    <string name="carnet">Carnet:</string>
+    <string name="ejemplo_nombre">Ejemplo: Miguel Aviles</string>
+    <string name="nota">Nota:</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="buscar">Buscar</string>
+    <string name="alumnos">ALUMNOS</string>
+    <string name="ejemplo_miguel_aviles">Ejemplo: Miguel Aviles</string>
+    <string name="ejemplo_9_5">Ejemplo: 9.5</string>
+    <string name="score">NOTAS</string>
+    <string name="promedio">PROMEDIO</string>
+    <string name="limpiar">limpiar</string>
+</resources>
