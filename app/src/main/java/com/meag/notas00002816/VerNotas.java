@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class VerNotas extends Fragment {
     ScoreAdapter adapter;
     LinearLayoutManager linearLayoutManager;
     List<Alumno> alumnoList;
+    TextView textViewpromedio;
+
     public VerNotas() {
         // Required empty public constructor
     }
@@ -31,16 +34,17 @@ public class VerNotas extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_ver_notas, container, false);
-        DBHelper dbHelper=new DBHelper(this.getContext());
-        alumnoList=dbHelper.filllist();
-        rv=v.findViewById(R.id.recycler);
+        DBHelper dbHelper = new DBHelper(this.getContext());
+        alumnoList = dbHelper.filllist();
+        rv = v.findViewById(R.id.recycler);
         linearLayoutManager = new LinearLayoutManager(this.getContext());
         rv.setLayoutManager(linearLayoutManager);
-        adapter=new ScoreAdapter(alumnoList);
+        adapter = new ScoreAdapter(alumnoList);
         rv.setAdapter(adapter);
+        textViewpromedio = v.findViewById(R.id.textView_avg);
+        textViewpromedio.setText(String.valueOf(dbHelper.getAvg()));
         return v;
     }
-
 
 
 }

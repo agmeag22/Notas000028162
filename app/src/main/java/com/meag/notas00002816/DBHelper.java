@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String DB_NAME = "bd_usuarios";
+    public static final String DB_NAME = "bd_alumnos";
     public static final String TABLA_USUARIO = "Persona";
     public static final String CAMPO_ID = "dui";
     public static final String CAMPO_NOMBRE = "nombre";
@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(CAMPO_ID, p.getCarnet());
         values.put(CAMPO_NOMBRE, p.getNombre());
-        values.put(CAMPO_NOTA,p.getNota());
+        values.put(CAMPO_NOTA, p.getNota());
         db.insert(TABLA_USUARIO, null, values);
         Toast.makeText(context, "Insertado con exito", Toast.LENGTH_SHORT).show();
         return true;
@@ -95,21 +95,34 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public List<Alumno> filllist() {
-        List<Alumno> alumnoList=new ArrayList<>();
-        Alumno p=null;
-        String[] campos = {CAMPO_ID,CAMPO_NOMBRE,CAMPO_NOTA};
+        List<Alumno> alumnoList = new ArrayList<>();
+        Alumno p = null;
+        String[] campos = {CAMPO_ID, CAMPO_NOMBRE, CAMPO_NOTA};
 
         try {
             Cursor cursor = db.query(TABLA_USUARIO, campos, null, null, null, null, null);
-            while(cursor.moveToNext()) {
-                Log.d("ENTRO", "findUser: ENTRO");
-                p = new Alumno( cursor.getString(0),cursor.getString(1), cursor.getString(2));
+            while (cursor.moveToNext()) {
+                p = new Alumno(cursor.getString(0), cursor.getString(1), cursor.getString(2));
                 alumnoList.add(p);
             }
         } catch (Exception e) {
             alumnoList = null;
         }
         return alumnoList;
+    }
+
+    public float getAvg() {
+        float avg = 0;
+        try {
+            String query = "SELECT AVG(" + CAMPO_NOTA + ")" + " FROM " + TABLA_USUARIO;
+            Cursor cursor = db.rawQuery(query, null);
+            while (cursor.moveToNext()) {
+                avg = cursor.getFloat(0);
+            }
+        } catch (Exception e) {
+            avg = 0;
+        }
+        return avg;
     }
 
 }

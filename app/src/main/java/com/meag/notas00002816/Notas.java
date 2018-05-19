@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class Notas extends Fragment {
             public void onClick(View v) {
                 Alumno p = DBHelper.myDB.findUser(carnet.getText().toString());
                 if (p == null) {
-                    Toast.makeText(getContext(), "usuario no encontrado", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "usuario no encontrado", Toast.LENGTH_SHORT).show();
                     limpiar();
                 } else {
                     nombre.setText(p.getNombre());
@@ -45,7 +46,9 @@ public class Notas extends Fragment {
         btnmodificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 DBHelper.myDB.editUser(new Alumno(carnet.getText().toString(), nombre.getText().toString(), nota.getText().toString()));
+                limpiar2();
             }
         });
         btneliminar.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +69,11 @@ public class Notas extends Fragment {
 
     private void limpiar() {
         carnet.setText("");
+        nombre.setText("");
+        nota.setText("");
+    }
+
+    private void limpiar2() {
         nombre.setText("");
         nota.setText("");
     }
